@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            
+            border: 1px black solid;
+            margin-top:30px;
+        }
+        .btn{
+            width:100px;
+            background-color: blue;
+            font-size:15px;
+            color:white;
+        }
+        .list{
+            width:400px;
+            height:300px;
+            border:20px #999 solid;
+            text-align:center;
+        }
+        .selectList{
+            width:70%;
+           
+            margin: 40px auto;
+            list-style: none;
+        }
+        .selectList li{
+            margin-top:15px;
+        }
+        #red{
+            display:inline-block;
+            width:30px;
+            height:20px;
+            text-align:center;
+            color:white;
+            background-color: red;
+            border:1px black solid;
+        }
+        #yellow{
+            display:inline-block;
+            width:30px;
+            height:20px;
+            text-align:center;
+            color:white;
+            background-color: yellow;
+            border:1px black solid;
+        }
+        #blue{
+            display:inline-block;
+            width:30px;
+            height:20px;
+            text-align:center;
+            color:white;
+            background-color: blue;
+            border:1px black solid;
+        }
+        #w200,#w300,#w400,#h200,#h300,#h400 {
+            display:inline-block;
+            width:30px;
+            height:20px;
+            text-align:center;
+            background-color:pink;
+            border:1px black solid;
+        }
+        .reset{
+            width:50px;
+            font-size:15px;
+            background-color: blueviolet;
+            color:white;
+        
+        }
+        .define{
+            width:50px;
+            font-size:15px;
+            background-color: blueviolet;
+            color:white;
+        
+        }
+        .btnGroup{
+            width:70%;
+            margin: 40px auto;
+        }
+        .mask{
+            /* 不设置宽高，list就无法实现相对定位 */
+            width:100%;
+            height:100%;
+            display:none;
+            /* 遮罩层 */
+            background:rgba(0,0,0,.5); 
+            position: absolute;
+            left:0;
+            top:0;
+        }
+        .list{
+            background-color: white;
+            position: absolute;
+            left:20%;
+            top:20%;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div>
+            <span>请为下面的div设置样式：</span>
+            <button class="btn">点击设置</button>
+    </div>
+    <!-- 必须写上内联样式，否则后面cssText获取不到 -->
+    <div id="box" style="width:100px;height:100px;"></div>
+    <div class="mask">
+        <div class="list">
+                <ul class="selectList">
+                        <li>
+                            <span>请选择背景色：</span>
+                            <span id="red">红</span>
+                            <span id="yellow">黄</span>
+                            <span id="blue">蓝</span>
+                        </li>
+                        <li>
+                                <span>请选择宽(px)：</span>
+                                <span id="w200">200</span>
+                                <span id="w300">300</span>
+                                <span id="w400">400</span>
+                            </li>
+                            <li>
+                                <span>请选择高(px)：</span>
+                                <span id="h200">200</span>
+                                <span id="h300">300</span>
+                                <span id="h400">400</span>
+                            </li>
+                    </ul>
+                    <div class="btnGroup">
+                            <button class="reset">恢复</button>
+                            <button class="define">确认</button>
+                    </div>
+                    
+        </div>
+        
+    </div>
+
+    <script>
+        var btn = document.querySelector(".btn");
+        var box = document.querySelector("#box");
+        var red = document.querySelector("#red");
+        var blue = document.querySelector("#blue");
+        var yellow = document.querySelector("#yellow");
+        var w200 = document.querySelector("#w200");
+        var w300 = document.querySelector("#w300");
+        var w400 = document.querySelector("#w400");
+        var h200 = document.querySelector("#h200");
+        var h300 = document.querySelector("#h300");
+        var h400 = document.querySelector("#h400");
+        var reset = document.querySelector(".reset");
+        var define = document.querySelector(".define");
+        var mask = document.querySelector(".mask");
+        var list = document.querySelector(".list");
+         
+         btn.onclick = function(){
+             if(mask.style.display=="none"){
+                 mask.style.display = "block"
+             }
+             else mask.style.display="none"; 
+         }
+         red.onclick = function(){
+             box.style.cssText+= "background-color:red;";
+         }
+         yellow.onclick = function(){
+             box.style.cssText+= "background-color:yellow;";
+         }
+         blue.onclick = function(){
+             box.style.cssText+= "background-color:blue;";
+         }
+         w200.onclick = function(){
+             box.style.cssText+="width:200px;"
+         }
+         w300.onclick = function(){
+             box.style.cssText+="width:300px;"
+         }
+         w400.onclick = function(){
+             box.style.cssText+="width:400px;"
+         }
+         h200.onclick = function(){
+             box.style.cssText+="height:200px;"
+         }
+         h300.onclick = function(){
+             box.style.cssText+="height:300px;"
+         }
+         h400.onclick = function(){
+             box.style.cssText+="height:400px;"
+         }
+         reset.onclick = function(){
+            box.style.cssText+= "background-color:white;width:100px;height:100px;";
+         }
+         define.onclick = function(){
+             mask.style.display="none"; 
+         }
+
+
+    </script>
+</body>
+</html>
