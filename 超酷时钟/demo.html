@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #660066;
+        }
+        .wrap{
+            width:520px;
+            height:520px;
+            background: url("images/bg.png") no-repeat;
+            margin:30px auto;
+            position: relative;
+        }
+        .content{
+            position:absolute;
+            top:80px;
+            left:80px;
+            text-align:center;
+        }
+        .box1{
+            margin-top:30px;
+            margin-bottom: 20px;
+        }
+
+    
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="content">
+            <div>
+                <img src="images/title.png" alt="title">
+            </div>
+            <div class="box1">
+                <img src="images/2.png" class="num">
+                <img src="images/0.png" class="num">
+                <img src="images/1.png" class="num">
+                <img src="images/9.png" class="num">
+                <img src="images/year.png">
+                <img src="images/1.png" class="num">
+                <img src="images/0.png" class="num">
+                <img src="images/month.png" alt="4">
+                <img src="images/2.png" class="num">
+                <img src="images/9.png" class="num">
+                <img src="images/seven.png">
+            </div>
+            <div class="box2">
+                <img src="images/1.png" class="num">
+                <img src="images/4.png" class="num">
+                <img src="images/sign.png">
+                <img src="images/1.png" class="num">
+                <img src="images/1.png" class="num">
+                <img src="images/sign.png">
+                <img src="images/1.png" class="num">
+                <img src="images/1.png" class="num">
+                <img src="images/week.png">
+                <img src="images/one.png" class="num2">
+            </div>
+        </div>
+    </div>
+    <script>
+        
+        (function(){
+        var num = document.querySelectorAll(".num");
+        var num2 = document.querySelector(".num2");
+        
+       
+        // 保证每一位都是两位数
+        function toDouble(num){
+            num<10?"0"+num:""+num;
+            return num;
+        }
+        function next(){
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = toDouble(date.getMonth()+1);
+        var day = toDouble(date.getDate());
+        var hour = toDouble(date.getHours());
+        var minute = toDouble(date.getMinutes());
+        var second = toDouble(date.getSeconds());
+        var time = ""+year+month+day+hour+minute+second;
+        var weekNum = [
+            "images/seven.png",
+            "images/one.png",
+            "images/two.png",
+            "images/three.png",
+            "images/four.png",
+            "images/five.png",
+            "images/six.png"
+        ]
+        var week = date.getDay();
+        num2.src = weekNum[week];
+        for(var i=0;i<num.length;i++){
+                num[i].src="images/"+time[i]+".png";
+                console.log(time[i]);
+            }
+        }
+        setInterval(next,1000);
+        //因为setInterval是第一秒之后才开始，因此刷新时会差一秒，加一步直接执行就可解决问题
+        next();
+            
+            
+        })()
+
+    
+    </script>
+</body>
+</html>

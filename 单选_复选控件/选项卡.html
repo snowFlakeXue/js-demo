@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .option .active {
+            background: red;       
+        }
+        .inner div {
+            font-size: 100px;
+            display: none;
+        }
+        .inner .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="tab">
+    <div class="option">
+        <button class="active">选项1</button>
+        <button >选项2</button>
+        <button>选项3</button>
+    </div>
+    <div class="inner">
+        <div  class="show">内容1</div>
+        <div>内容2</div>
+        <div>内容3</div>
+    </div>
+</div>  
+<script>
+ let btn = document.querySelectorAll(".option button");
+ let inner = document.querySelectorAll(".inner div");
+ let now = 0;
+ for(let i = 0;i<btn.length;i++){
+    // 索引的使用
+    //  btn[i].index = i;
+    //  btn[i].onmouseover = function(){
+    //     for(let i = 0;i<btn.length;i++){
+    //         btn[i].classList.remove("active");
+    //        inner[i].classList.remove("show");
+    //       this.classList.add("active");
+    //       inner[this.index].classList.add("show");
+          
+    //     }
+    //  }
+    //  若不想使用两次循环可设置一个标记来记录上次选中的元素
+    btn[i].index = i;
+    btn[i].onmouseover = function(){
+        btn[now].classList.remove("active");
+        inner[now].classList.remove("show");
+        this.classList.add("active");
+        inner[this.index].classList.add("show");
+        now = this.index; 
+    }
+
+ }
+
+</script>  
+</body>
+</html>

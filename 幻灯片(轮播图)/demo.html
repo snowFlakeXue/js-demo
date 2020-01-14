@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>
+*{
+ padding:0px;
+ margin:0px;
+}
+.wrap{
+   background: url("img/bg.jpg") no-repeat;
+   background-position: center center;
+   width:1500px;
+   height:700px;
+   position: relative;
+   /* 为了以后的子元素能设置absolute */
+}
+/* 下面的absolute都是相对于wrap的距离 */
+#img{
+   position:absolute;
+   top:110px;
+   left:550px;
+} 
+#txt{
+    position:absolute;
+    left:680px;
+    top:530px;
+}
+.prev{
+    background: url("img/ar.png") no-repeat;
+    position: absolute;
+    left:560px;
+    top:275px;
+    width:50px;
+    height:70px;
+}
+.next{
+    background: url("img/ar.png") no-repeat;
+    position: absolute;
+    left:1020px;
+    top:250px;
+    /* 2D旋转 */
+    transform:rotate(180deg); 
+    width:50px;
+    height:70px;
+}
+.nav{
+    position: absolute;
+    left:750px;
+    top:420px;
+}
+a{
+    border-radius: 50%;
+    background: #fff;
+    width:10px;
+    height:10px;
+    display:inline-block;
+    margin:0 3px;
+    /* 小手 */
+    cursor: pointer;
+}
+.active{
+    background:orange;
+}
+.smallPic{
+    /* 相对于父级，没有父级就像对于body */
+    position: relative;;
+    width:100px;
+    height:100px;
+    border:1px solid #fff;
+    display: none;
+    left:-50px;
+    top:-103px;
+}
+
+</style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="pic">
+            <img id="img" src="img/img1.jpg" />
+            <a class="next" href="javascript:;"></a>
+            <a class="prev" href="javascript:;"></a>
+            <div class="nav">
+                <a class="dot">
+                    <img src="img/img1.jpg" style="display: none;" class="smallPic" />
+                </a>
+                <a class="dot">
+                    <img src="img/img2.jpg" style="display: none;" class="smallPic"  />
+                </a>
+                <a class="dot">
+                    <img src="img/img3.jpg" style="display: none;" class="smallPic" />
+                </a>
+                <a class="dot">
+                    <img src="img/img4.jpg" style="display: none;" class="smallPic" />
+                </a>
+                <a class="dot">
+                    <img src="img/img5.jpg" style="display: none;" class="smallPic" />
+                </a>
+                
+            </div>
+            
+            <p id="txt">这是第1张图片</p>
+            
+        </div>
+    </div>
+    <script>
+        let img = document.querySelector('#img');
+        let next = document.querySelector('.next');
+        let prev = document.querySelector('.prev');
+        let txt = document.querySelector('#txt');
+        let dot = document.querySelectorAll('.dot');
+        let num = 1;
+     
+        
+        dot[0].className='active'
+        next.onclick = function(){
+            if(num==5){
+                num=0;
+            } 
+            num++;
+            img.src ="img/img"+num+".jpg";
+           
+            txt.innerHTML = '这是第'+num+'张照片';
+            // 先清空其他点
+            for(let i = 0;i<5;i++){
+                dot[i].className='dot';
+            }
+            dot[num-1].className='active'
+        }
+        prev.onclick = function(){
+            if(num==1){
+                num=6;
+            }
+            num--;
+            img.src ="img/img"+num+".jpg";
+           
+            txt.innerHTML = '这是第'+num+'张照片';
+            for(let i = 0;i<5;i++){
+                dot[i].className='dot';
+            }
+            dot[num-1].className='active'
+        }
+        for(let i=0;i<dot.length;i++){
+            dot[i].index = i;
+               dot[i].onmouseover = function(){
+                //    用this解决获取不到的问题，this是指触发事件的元素，这里是dot[i]
+                   let sImag=this.querySelector('.smallPic')
+                  sImag.style.display='block';
+               }
+              
+                dot[i].onmouseout = function(){
+                   let sImag=this.querySelector('.smallPic')
+                  sImag.style.display='none';
+               }
+               dot[i].onclick = function(){
+                for(let i=0;i<dot.length;i++){
+                    dot[i].classList.remove("active");
+                }
+                let src = this.index+1;
+                img.src ="img/img"+src+".jpg";
+                this.classList.add("active");
+              
+                num = this.index+1;
+                now=this.index;
+               }
+               
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>擦出图片</title>
+    <style>
+        body{
+            margin: 0;
+            background-color: rgb(211, 241, 213);
+        }
+        .wrap{
+            position: relative;
+            width: 590px;
+            margin: 100px auto;
+        }
+        .wrap div{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background: url("img.jpg");
+            background-color: rgb(98, 133, 95);
+            background-size: 1000% 1000%;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        
+    </div>
+<script>
+    let box = document.querySelector(".wrap");
+    let inner = "";
+    let w=50;
+    let h=50;
+    // 用一个循环,也可用双循环
+    for(let i = 0;i<100;i++){
+       
+        let x = i%10;
+        let y=parseInt(i/10);
+                //  注意单双引号的使用
+               inner+='<div style="background-position:-'+(w*x)+'px -'+(h*y)+'px;left:'+(w*x)+'px;top:'+(y*h)+'px;"></div>';
+       
+    }
+    box.innerHTML=inner;
+
+
+</script>
+</body>
+</html>

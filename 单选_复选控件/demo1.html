@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+        h3 {
+            margin: 0;
+            color: #e15671;
+            position: absolute;
+            left: 50%;
+            top: 130px;
+            z-index: 9;
+        }
+
+        .option {
+            background: url("images/checkboxbg.png") no-repeat 0 -260px;
+        }
+
+        .box {
+            width: 555px;
+            margin: 30px auto;
+        }
+        a {
+            width: 70px;
+            height: 30px;
+            line-height: 30px;
+            display: inline-block;
+            border: 1px solid #999;
+            text-decoration: none;
+            text-align: center;
+            color: #000;
+            margin-top: 160px;
+        }
+
+        .option a:first-child {
+            margin-left: 170px;
+        }
+
+        .checked {
+            border: 1px solid #e4393c;
+            background: url("images/newicon20140910.png") no-repeat right bottom;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h3>模拟复选</h3>
+        <div class="option">
+            <a href="javascript:;">美食</a>
+            <a href="javascript:;">逛街</a>
+            <a href="javascript:;">旅游</a>
+        </div>
+    </div>
+</body>
+<script>
+    let a = document.querySelectorAll('.option a');
+    for(let i=0;i<a.length;i++){
+        a[i].onclick=function(){
+            this.className = this.className=="checked"?'':"checked"
+        }
+    }
+   
+
+</script>
+
+</html>

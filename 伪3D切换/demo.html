@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: pink;
+            position: relative;
+        }
+
+        #prev {
+            background-color: black;
+            background: url("img/prev.png");
+            width: 20px;
+            height: 30px;
+            position: absolute;
+            top: 200px;
+            left: 150px;
+        }
+
+        #next {
+            background-color: black;
+            background: url("img/next.png");
+            width: 20px;
+            height: 30px;
+            position: absolute;
+            top: 200px;
+            left: 850px;
+        }
+
+        img {
+            transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .one {
+            position: absolute;
+            top: 100px;
+            left: 200px;
+            /* 缩放大小 */
+            transform: scale(.8);
+        }
+
+        .two {
+            position: absolute;
+            top: 100px;
+            left: 380px;
+            z-index: 2;
+            transform: scale(1.2);
+        }
+
+        .three {
+            position: absolute;
+            top: 100px;
+            left: 560px;
+            transform: scale(.8);
+        }
+    </style>
+</head>
+
+<body>
+    <img src="img/f1.png" class="one">
+    <img src="img/f2.png" class="two">
+    <img src="img/f3.png" class="three">
+    <button id="prev"></button>
+    <button id="next"></button>
+    <script>
+        (function () {
+            var prev = document.querySelector("#prev");
+            var next = document.querySelector("#next");
+            var img = document.querySelectorAll("img");
+            var  classList = [];
+            for(var i = 0;i < img.length;i++){
+                classList.push(img[i].className);
+            }
+            prev.onclick = function(){
+                classList.push(classList.shift());
+               
+                for(var i = 0;i < img.length;i++){
+                    img[i].className=classList[i];
+               
+            }
+            
+            }
+            next.onclick = function(){
+                classList.unshift(classList.pop());
+                for(var i = 0;i < img.length;i++){
+                    img[i].className=classList[i];
+               
+            }
+           
+            }
+ 
+        })()
+    </script>
+</body>
+
+</html>

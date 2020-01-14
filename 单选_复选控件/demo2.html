@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8" />
+  <title></title>
+  <style>
+    .box {
+      width: 555px;
+      margin: 30px auto;
+    }
+
+    .option {
+      width: 555px;
+      height: 310px;
+      background: url("images/bg.png") no-repeat;
+      position: relative;
+    }
+
+    a {
+      width: 70px;
+      height: 30px;
+      line-height: 30px;
+      display: inline-block;
+      border: 1px solid #999;
+      text-decoration: none;
+      text-align: center;
+      color: #000;
+      margin-top: 160px;
+    }
+
+    .option a:first-child {
+      margin-left: 170px;
+    }
+
+    .checked {
+      border: 1px solid rgb(228, 57, 60);
+      background: url("images/newicon20140910.png") no-repeat right bottom;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+
+    <div class="option">
+      <a href="javascript:;">美食</a>
+      <a href="javascript:;">逛街</a>
+      <a href="javascript:;">旅游</a>
+    </div>
+  </div>
+</body>
+<script>
+  let a = document.querySelectorAll('.option a');
+ 
+  for (let i = 0; i < a.length; i++) {
+      a[i].onclick = function () {
+      // 先去除所有active
+      for (let i = 0; i < a.length; i++) {
+        a[i].className = '';
+      }
+      //再修改定点
+      a[i].className = "checked";
+    }
+  }
+  // 也可找到所有checked进行删除再定点修改
+    
+
+ 
+</script>
+
+</html>

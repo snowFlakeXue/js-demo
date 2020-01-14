@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            float: right;
+            width: 300px;
+            height: 700px;
+            border: 1px solid black;
+            margin-top: 30px;
+            margin-right: 10px;
+            box-shadow: 0px 0px 20px #585858;
+            border-radius: 10px;
+            ;
+        }
+
+        .avater {
+            padding-top: 30px;
+            padding-bottom: 50px;
+            padding-left: 10px;
+            border-bottom: 1px solid #33CCFF;
+        }
+
+        .show {
+            background-color: #CC6666;
+            /* display: none; */
+            color: #990000;
+            width: 200px;
+            height: 150px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px #CC6666;
+            padding-top: 30px;
+            padding-left: 10px;
+            float: right;
+            margin-right: 10px;
+            margin-top: 30px;
+            cursor: pointer;
+        }
+
+        .image {
+            border: 1px solid #33CCFF;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="box">
+        <div class="avater">
+            <img class="image" src="img.png" />
+        </div>
+    </div>
+
+    <div class="show" style="display: none">
+        <p>昵称：开课吧</p>
+        <p>地址：北京市 朝阳区</p>
+    </div>
+    <script>
+        var image = document.querySelector('.image');
+        var show = document.querySelector('.show');
+        var timer = 0;
+
+
+        image.onmouseover = show.onmouseover = function () {
+            clearTimeout(timer);
+            show.style.display = 'block';
+        }
+        image.onmouseout = show.onmouseout = function () {
+
+            timer = setTimeout(() => {
+                show.style.display = 'none';
+            }, 500);
+            
+        }
+
+    </script>
+
+</body>
+
+</html>

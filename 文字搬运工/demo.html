@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrap {
+            background: url("images/bg.png") no-repeat;
+            width: 1200px;
+            height: 700px;
+            margin: 10 auto;
+            position: relative;
+        }
+
+        .box {
+            position: absolute;
+            top: 200px;
+            left: 100px;
+            width: 1100px;
+            height: 600px;
+        }
+
+        textarea,
+        p {
+            width: 400px;
+            height: 400px;
+            float: left;
+            padding: 2px;
+        }
+
+        p {
+            background-color: #3366FF;
+            float: right;
+            width: 400px;
+            height: 400px;
+            margin-right: 100px;
+            margin-top: 0px;
+        }
+
+        .center {
+            float: left;
+            margin-top: 100px;
+        }
+
+        button {
+            background: url("images/change_03.png") no-repeat;
+            width: 100px;
+            height: 80px;
+            border: none;
+
+        }
+
+        ul {
+            list-style: none;
+            transition: 1s;
+            /* opacity: 0; */
+            display: none;
+        }
+
+        li {
+            float: left;
+            background-color: #FF6633;
+            width: 10px;
+            height: 10px;
+        }
+
+        button,
+        .box div {
+            margin-left: 30px;
+
+        }
+
+        span {
+            display: block;
+            padding-left: 64px;
+            margin-top: 10px;
+        }
+
+        .active {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="box">
+            <textarea>妙味课堂是一支充满温馨并且极富人情味的IT培训团队；2010-2011年，妙味深度关注WEB前端开发领域，为此精心研发出一套灵活而充满趣味的JavaScript课程。2011-2013年，妙味精准研发出最新HTML5\CSS3课程，并推出远程培训课程方案，尝试将线下优良的培训模式移植到远程网络培训中，希望尽最大努力，将一种快乐愉悦的授课体验、结合HTML\CSS\JS知识点，精准传递给妙味课堂的每一位学员。</textarea>
+            <p></p>
+            <div class="center">
+                <button></button>
+                <span>0/0</span>
+                <ul>
+                    <li class="active"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        (function () {
+            var btn = document.querySelector("button");
+            var ul = document.querySelector("ul");
+            var li = document.querySelectorAll("li");
+            var span = document.querySelector("span");
+            var txt = document.querySelector("textarea");
+            var p = document.querySelector("p");
+            var timer = 0;
+            btn.onclick = function () {
+                var inner = txt.value;
+                var index = 0;
+                //  ul.style.opacity = 1;
+                ul.style.display = "block";
+                if (timer) {
+                    return;
+                }
+
+                timer = setInterval(function () {
+                    index++;
+                    p.innerHTML = inner.substring(0, index);
+                    txt.value = inner.substring(index);
+                    span.innerHTML = index + "/" + inner.length;
+                    for (var i = 0; i < li.length; i++) {
+                        li[i].classList.remove("active");
+                    }
+                    li[(index) % li.length].classList.add("active");
+                    if (index >= inner.length) {
+
+                        clearInterval(timer);
+                        //   ul.style.opacity = 0;
+                        ul.style.display = "none";
+                        timer = 0;
+                    }
+                }), 20
+            }
+
+
+        })()
+
+
+
+    </script>
+</body>
+
+</html>
