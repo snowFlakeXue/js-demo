@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .nav{
+        padding: 100px;
+    }
+   
+    a{
+            perspective: 50px;
+            float: left;
+            margin: 0 10px;
+            height: 30px;
+            font: 16px/30px "宋体";
+
+    }
+    .nav span {
+            transform-style: preserve-3d;
+            float: left;
+            height: 30px;
+            transition: .5s;
+            transform-origin: center center -15px;
+        }
+    span em{
+        display: block;
+        backface-visibility: hidden;
+        font-style: normal;
+
+
+    }
+    a em:nth-child(1){
+        transform: rotateX(0deg);
+        color: #000;    
+
+
+    }
+    a em:nth-child(2){
+        color: rgb(233, 27, 61);
+        transform-origin: top;
+        transform: rotateX(-90deg);
+    }
+     a:hover span{
+        transform:rotateX(90deg);
+    } 
+</style>
+<body>
+    <div class="nav">
+      
+                <a href="#"><span><em>首页</em><em>首页</em></span></a>
+         
+                <a href="#"><span><em>相册</em><em>相册</em></span></a>
+          
+                <a href="#"><span><em>关于</em><em>关于</em></span></a>
+          
+    </div>
+</body>
+</html>

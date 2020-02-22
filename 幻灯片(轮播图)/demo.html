@@ -84,6 +84,7 @@ a{
             <img id="img" src="img/img1.jpg" />
             <a class="next" href="javascript:;"></a>
             <a class="prev" href="javascript:;"></a>
+            <!-- 缩略图 -->
             <div class="nav">
                 <a class="dot">
                     <img src="img/img1.jpg" style="display: none;" class="smallPic" />
@@ -145,10 +146,11 @@ a{
             dot[num-1].className='active'
         }
         for(let i=0;i<dot.length;i++){
+            // 增加index属性
             dot[i].index = i;
                dot[i].onmouseover = function(){
                 //    用this解决获取不到的问题，this是指触发事件的元素，这里是dot[i]
-                   let sImag=this.querySelector('.smallPic')
+                   let sImag=dot[i].querySelector('.smallPic')
                   sImag.style.display='block';
                }
               
@@ -163,9 +165,7 @@ a{
                 let src = this.index+1;
                 img.src ="img/img"+src+".jpg";
                 this.classList.add("active");
-              
                 num = this.index+1;
-                now=this.index;
                }
                
         }

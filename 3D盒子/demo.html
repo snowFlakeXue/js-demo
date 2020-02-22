@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        perspective: 600px;
+
+    }
+    #box{
+        width:200px;
+        height:200px;
+        position: relative;
+        margin:300px auto;
+        text-align: center;
+        line-height: 2;
+        font-size: 100px;
+        color: #fff;
+        transform-style: preserve-3d;
+        transform-origin: center center -100px;
+        transition: 5s;
+        
+    }
+    #box div:nth-child(1){
+        width:200px;
+        height:200px;
+        background-color: aqua;
+        opacity: .3;
+        position: absolute;
+        top:-200px;;
+        left:0px;
+        transform-origin: bottom;
+        transform: rotateX(90deg);
+        
+
+    }
+    #box div:nth-child(2){
+        width:200px;
+        height:200px;
+        background-color: rgb(32, 85, 230);
+        opacity: .3;
+        position: absolute;
+        top:0px;;
+        left:-200px;
+        transform-origin: right;
+        transform: rotateY(-90deg);
+    }
+    #box div:nth-child(3){
+        width:200px;
+        height:200px;
+        background-color: rgb(231, 31, 198);
+        opacity: .3;
+        position: absolute;
+        top:0px;;
+        left:0px;
+    }
+    #box div:nth-child(4){
+        width:200px;
+        height:200px;
+        background-color: rgb(238, 255, 0);
+        opacity: .3;
+        position: absolute;
+        top:0px;;
+        left:200px;
+        transform-origin: left;
+        transform: rotateY(90deg);
+    }
+    #box div:nth-child(5){
+        width:200px;
+        height:200px;
+        background-color: rgb(255, 0, 64);
+        opacity: .3;
+        position: absolute;
+        top:200px;;
+        left:0px;
+        transform-origin: top;
+        transform: rotateX(-90deg);
+    }
+    #box div:nth-child(6){
+        width:200px;
+        height:200px;
+        background-color: rgb(0, 255, 0);
+        opacity: .3;
+        position: absolute;
+        top:0px;;
+        left:0px;
+        transform-origin: center center;
+        transform: translateZ(-200px);
+    }
+    #box:hover{
+        transform: rotateY(360deg);
+    }
+</style>
+
+<body>
+    <div id="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+    </div>
+</body>
+
+</html>

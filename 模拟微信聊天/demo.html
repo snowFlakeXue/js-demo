@@ -116,7 +116,7 @@
         let list = document.querySelector('.list');
 
 
-        let isTrue = true;//开关
+        let isTrue = false;//开关
         //let value = txt.value;不能这么用，.value只能什么时候用什么时候写
         icon.onclick = function(){
             if(isTrue){
@@ -128,7 +128,6 @@
             isTrue = true;
         }
         }
-        isTrue = false;//否则点击图像，会取反导致第一次没点击图像时出错误
         btn.onclick = function(){
             if(txt.value==''){
                 alert("不能为空")
